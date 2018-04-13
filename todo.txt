@@ -1,0 +1,49 @@
+
+mkdir output
+
+
+todo
+a) done - rendered video should be saved on host folder output, or configurable
+b) done - output filename should be configurable, useful when running multiple repositories
+c) done - disable web server, and docker instance should stop after rendering 
+
+
+docker build -t envisaged .
+
+
+docker run --rm -p 80:80 --name envisaged -v /$(pwd)/output:/output \
+       -e GIT_URL=https://github.com/kubernetes/kubernetes.git \
+       -e LOGO_URL=https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png \
+       -e GOURCE_TITLE="Kubernetes Development" \
+       -e OUTPUT_FILE="kubernetes.mp4"\
+       envisaged
+
+docker run --rm -p 80:80 --name envisaged -v /$(pwd)/output:/output \
+       -e GIT_URL=https://github.com/kubernetes/kubernetes.git \
+       -e LOGO_URL=https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png \
+       -e GOURCE_TITLE="Kubernetes Development" \
+       -e OUTPUT_FILE="kubernetes.mp4"\
+       envisaged       
+
+
+
+
+http://pngimg.com/uploads/bitcoin/bitcoin_PNG48.png
+
+docker run --rm --name bitcoin -v /$(pwd)/output:/output \
+       -e GIT_URL=https://github.com/bitcoin/bitcoin.git \
+       -e LOGO_URL=http://pngimg.com/uploads/bitcoin/bitcoin_PNG48.png \
+       -e GOURCE_TITLE="Bitcoin Development" \
+       -e OUTPUT_FILE="bitcoin.mp4"\
+       envisaged
+
+
+docker run --rm --name ethereum -v /$(pwd)/output:/output \
+       -e GIT_URL=https://github.com/ethereum/go-ethereum.git \
+       -e LOGO_URL=https://www.ethereum.org/images/logos/ETHEREUM-ICON_Black_small.png \
+       -e GOURCE_TITLE="Ethereum Development" \
+       -e OUTPUT_FILE="ethereum.mp4"\
+       envisaged
+
+
+       
